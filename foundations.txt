@@ -1,0 +1,13 @@
+Foundations in ExpressJS
+
+ExpressJS ===> framework 
+
+offers 4 things
+
+1) middleware ==> function (request, response, next)
+2) routing
+3) Composing Views
+4) extending the request, response object
+
+What is a Server?
+It is a software ( hardware ) that accepts requests and process the response.
