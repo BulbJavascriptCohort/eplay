@@ -10,6 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.21.1",
+    "countryinfo": "^1.0.5",
+    "ejs": "^3.1.6",
     "express": "^4.17.1",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.10"
