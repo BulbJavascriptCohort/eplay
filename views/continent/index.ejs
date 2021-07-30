@@ -1,0 +1,11 @@
+<% if(arrayOfData){%>
+<h2>Continent region</h2>
+<ol>
+  <% arrayOfData.forEach(continent=>{%>
+  <li>
+    <a href="continent/<%= continent.name %>"><%= continent.name %></a>
+    with <% continent.countries.length %> countries
+  </li>
+  <% })%>
+</ol>
+<%}%>
