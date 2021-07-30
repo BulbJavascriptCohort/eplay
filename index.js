@@ -2,6 +2,8 @@ const express = require('express')
 const morgan = require('morgan')
 const path = require("path")
 const http = require("http")
+const country = require('./model/country.model')
+
 
 const bankModel = require("./model/bank.model.js")
 const state = require("./model/region.model.js")
@@ -88,7 +90,11 @@ app.get('/hotels/:location/:filter', (req, res) => {
         req.params.filter
     }`)
 })
-
+// Country
+app.get('/countries', (req, res) => {
+    const allCountries = countryInfo.index(); 
+    res.render('countries/', {allCountries});
+})
 
 // Nigerian Banks App
 app.get('/banks', (req, res) => {
