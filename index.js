@@ -2,6 +2,7 @@ const express = require('express')
 const morgan = require('morgan')
 const path = require("path")
 const http = require("http")
+const countryInfo = require('./model/country.model');
 
 const bankModel = require("./model/bank.model.js")
 const state = require("./model/region.model.js")
@@ -130,10 +131,16 @@ app.get('/states/:id', (req, res) => {
     res.render("states/show", {data : state.show(stateIndex)})
 })
 
+// **** COUNTRY REQUEST ***** 
+app.get('/country' , (req,res) => {
+    const allCountries = countryInfo.index() ;
+       res.render('country' ,{allCountries}) ;
+   });
+
 app.use(function (req, res) {
     res.writeHead(400, {'Content-Type': 'text/plain'})
     res.end(`Error 404: Resource is missing. Go back home ${__dirname}`)
-})
+});
 
 
 // app.get('/iyin', (req, res) => {

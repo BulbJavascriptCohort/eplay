@@ -1,0 +1,13 @@
+<% if (allCountries) { %>
+    <h1>There are <%= allCountries.length %> countires in the world.</h1>
+    <ol>
+    <% allCountries.forEach((country) => { %>
+        <li>
+        <strong> <%= country[0] %></strong>
+            <p> has short-form of <strong><%= country[1] %></strong> </p>
+        </li>
+    <% }) %>
+</ol>
+    
+
+ <% } %>

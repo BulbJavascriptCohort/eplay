@@ -1,0 +1,9 @@
+<% if (allBanks) { %> 
+   
+    <ul>
+        <% allBanks.forEach((banks) => { %>
+            <li> <%= banks.name %> </li>
+            <img width="100px" src=<%= banks.logo %> >
+            <% }  ) %></ul>
+   
+<% } %> 
