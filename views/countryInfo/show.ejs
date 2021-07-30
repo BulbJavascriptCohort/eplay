@@ -1,0 +1,15 @@
+<% if (data) { %>
+<h1><%= data.country.languages('Germany') %></h1>
+<p>
+	has
+	<strong> <%= data.country.languages('Germany').length %> </strong> countries
+	that speak German
+</p>
+
+<ul>
+	<% data.country.languages('Germany').forEach( (item) => { %>
+	<li><%= item.name %></li>
+	<% }) %>
+</ul>
+
+<% } %>
