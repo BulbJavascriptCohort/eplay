@@ -1,0 +1,14 @@
+<% if (allDataArray){ %>
+
+<h1>All Regions in DB</h1>
+
+<ol>
+  <% allDataArray.forEach(region => { %>
+  <li>
+    <a href="/regions/<%= region.name %>"><%= region.name %></a> with <%=
+    region.countries.length %> countries
+  </li>
+  <% }) %>
+</ol>
+
+<% } %>
