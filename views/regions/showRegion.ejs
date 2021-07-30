@@ -1,0 +1,17 @@
+<% if(region) {%>
+
+<h1>Countries in <%= region.name %> Region</h1>
+
+<ol>
+  <% region.countries.forEach(country => { %>
+
+  <li>
+    <a href="/regions/<%=region.name%>/country/<%=country.names.en[0]%>"
+      ><%= country.names.en[0] %></a
+    >
+  </li>
+
+  <% })%>
+</ol>
+
+<% } %>

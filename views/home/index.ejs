@@ -1,33 +1,41 @@
-<div>
-	
-	<table>
-		<thead>
-			<tr>
-				<th colspan="4"> All Endpoints </th>
-			</tr>
-		</thead>
-		<tbody> 
-		 	<tr>
-            	<td>Request Method</td>
-            	<td>Endpoints</td>
-            	<td>Description</td>
-            	<td>link</td>
-        	</tr>
-        	<tr>
-            	<td>GET</td>
-            	<td>/states</td>
-            	<td>return all states in Nigeria</td>
-            	<td> <a href="/states"> States </a> </td>
-        	</tr>
-        	<tr>
-            	<td>GET</td>
-            	<td>/banks</td>
-            	<td>return all banks in Nigeria</td>
-            	<td> <a href="/banks"> Banks </a> </td>
-        	</tr>
-        </tbody>
+<body style="display: flex; flex-direction: column; align-items: center">
+  <h1>Country Info API</h1>
 
-	</table>
-
-
-</div>
+  <div>
+    <table border="1">
+      <thead>
+        <tr>
+          <th colspan="4">INFORMATION</th>
+        </tr>
+        <tr>
+          <th>Request method</th>
+          <th>Endpoint</th>
+          <th>Description</th>
+          <th>Link</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>GET</td>
+          <td>/regions</td>
+          <td>returns all regions in DB</td>
+          <td><a href="/regions">Regions</a></td>
+        </tr>
+        <tr>
+          <td>GET</td>
+          <td>/regions/{region_name}</td>
+          <td>returns all countries in region</td>
+          <td><a href="/regions/west%20africa">West Africa</a></td>
+        </tr>
+        <tr>
+          <td>GET</td>
+          <td>/regions/{region_name}/country/{country_name}</td>
+          <td>returns data about specific country</td>
+          <td>
+            <a href="/regions/west%20africa/country/nigeria">Nigeria</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
