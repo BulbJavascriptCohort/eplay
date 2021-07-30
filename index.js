@@ -88,7 +88,10 @@ app.get('/hotels/:location/:filter', (req, res) => {
         req.params.filter
     }`)
 })
-
+app.get('/countries', (req, res) => {
+    const allCountries = countryInfo.index(); 
+    res.render('countries/', {allCountries});
+})
 
 // Nigerian Banks App
 app.get('/banks', (req, res) => {

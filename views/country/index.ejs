@@ -1,0 +1,13 @@
+<% if (allCountries) { %>
+    <h1>
+        %= allCountries.length %>
+    </h1>
+
+    <ol>
+        <% allCountries.forEach( (country) => { %>
+            <li> <%= country.regionData %> uses flag <%= country.emoji %>   </li> 
+        <% }) %>
+    </ol>
+
+<% } %>
+
