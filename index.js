@@ -5,6 +5,7 @@ const http = require("http")
 
 const bankModel = require("./model/bank.model.js")
 const state = require("./model/region.model.js")
+const countries = require("./model/country.model.js")
 
 const app = express()
 const port = 3000
@@ -24,65 +25,65 @@ app.use(express.static(publicPath))
 
 
 app.get('/', (req, res) => {
-    // res.send('Welcome to the landing')
-    res.render('home/')
+  // res.send('Welcome to the landing')
+  res.render('home/')
 })
 app.get('/contact', (req, res) => {
-    res.send('Welcome to the contact')
+  res.send('Welcome to the contact')
 })
 app.get('/about', (req, res) => {
-    res.send('Welcome to the about')
+  res.send('Welcome to the about')
 })
 app.get('/matthew', (req, res) => {
-    res.send('Matthew Rules This World')
+  res.send('Matthew Rules This World')
 })
 
 app.get('/tunde/:hi', (req, res) => {
-    res.end(`Trafiky is here ${
+  res.end(`Trafiky is here ${
         req.params.hi
     }`)
 })
 
 app.get('/writers/', (req, res) => {
-    res.end(`It will list all writers`)
+  res.end(`It will list all writers`)
 })
 
 app.get('/writers/:id/', (req, res) => {
-    res.end(`It will one writer with id of ${
+  res.end(`It will one writer with id of ${
         req.params.id
     }`)
 })
 
 
 app.get('/shows/:hi', (req, res) => {
-    res.end(`Trafiky is here ${
+  res.end(`Trafiky is here ${
         req.params.hi
     }`)
 })
 
 app.get('/ratings/:hi', (req, res) => {
-    res.end(`Trafiky is here ${
+  res.end(`Trafiky is here ${
         req.params.hi
     }`)
 })
 
 app.post("/eben", (req, res) => {
-    res.send('What will eben do?')
+  res.send('What will eben do?')
 })
 
 app.get('/hotels/', (req, res) => {
-    // res.end(`It will list all hotels`)
-    res.render("hotels/show.ejs")
+  // res.end(`It will list all hotels`)
+  res.render("hotels/show.ejs")
 })
 
 app.get('/hotels/:location', (req, res) => {
-    res.end(`It will list all hotels in a location ${
+  res.end(`It will list all hotels in a location ${
         req.params.location
     }`)
 })
 
 app.get('/hotels/:location/:filter', (req, res) => {
-    res.end(`It will list all hotels in ${
+  res.end(`It will list all hotels in ${
         req.params.location
     } that is ${
         req.params.filter
@@ -92,47 +93,71 @@ app.get('/hotels/:location/:filter', (req, res) => {
 
 // Nigerian Banks App
 app.get('/banks', (req, res) => {
-    // res.send(bankModel.module.index())
-    res.render("banks/", {data : bankModel.module.index()})
+  // res.send(bankModel.module.index())
+  res.render("banks/", {
+    data: bankModel.module.index()
+  })
 })
 
 app.get('/banks/:index', (req, res) => {
 
-    const bankIndex = parseInt(req.params.index)
-    const totalBanks = bankModel.module.index().length
-    if (bankIndex > totalBanks) {
-        res.writeHead(400, {'Content-Type': 'text/plain'})
-        res.end("Error 404: Solomon is missing.")
-    }
+  const bankIndex = parseInt(req.params.index)
+  const totalBanks = bankModel.module.index().length
+  if (bankIndex > totalBanks) {
+    res.writeHead(400, {
+      'Content-Type': 'text/plain'
+    })
+    res.end("Error 404: Solomon is missing.")
+  }
 
-    // console.log( bankIndex, bankModel.module.bank( bankIndex ) )
-    // res.send(bankModel.module.bank(bankIndex))
-    res.render("banks/show", {data : bankModel.module.bank(bankIndex)})
+  // console.log( bankIndex, bankModel.module.bank( bankIndex ) )
+  // res.send(bankModel.module.bank(bankIndex))
+  res.render("banks/show", {
+    data: bankModel.module.bank(bankIndex)
+  })
 })
 
 const linkToHTML = path.join(__dirname, "./views", "html", "one.html")
 
 // Nigerian States App
 app.get('/states', (req, res) => { // res.send(state.index())
-    const allStates = state.index()
-    const playState = { "eben" : "iyin", "lola" : "red", "tecno" : "samsung" }
-    // res.send(allStates)
-    res.render('states', {playState: playState, allStates : allStates})
+  const allStates = state.index()
+  const playState = {
+    "eben": "iyin",
+    "lola": "red",
+    "tecno": "samsung"
+  }
+  // res.send(allStates)
+  res.render('states', {
+    playState: playState,
+    allStates: allStates
+  })
 })
 
 app.post("/states", (req, res) => {})
 
 app.get('/states/:id', (req, res) => {
 
-    const stateIndex = parseInt(req.params.id)
+  const stateIndex = parseInt(req.params.id)
 
-    // res.send(state.show(stateIndex))
-    res.render("states/show", {data : state.show(stateIndex)})
+  // res.send(state.show(stateIndex))
+  res.render("states/show", {
+    data: state.show(stateIndex)
+  })
 })
 
-app.use(function (req, res) {
-    res.writeHead(400, {'Content-Type': 'text/plain'})
-    res.end(`Error 404: Resource is missing. Go back home ${__dirname}`)
+// 'African' Countries and 'flags'
+app.get('/countries', (req, res) => {
+  res.render('countries', {
+    africanCountries: countries
+  })
+})
+
+app.use(function(req, res) {
+  res.writeHead(400, {
+    'Content-Type': 'text/plain'
+  })
+  res.end(`Error 404: Resource is missing. Go back home ${__dirname}`)
 })
 
 
@@ -143,5 +168,5 @@ app.use(function (req, res) {
 
 
 app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`)
+  console.log(`Example app listening at http://localhost:${port}`)
 })
