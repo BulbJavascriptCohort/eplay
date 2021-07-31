@@ -1,0 +1,11 @@
+<% if (africanCountries) { %>
+    <h1>
+         All 'African' Countries
+    </h1>
+    <ol>
+        <% africanCountries.forEach( (country) => { %>
+            <li> <%= country.name %> [<%= country.emoji %>] </li>
+        <% }) %>
+    </ol>
+
+<% } %>
