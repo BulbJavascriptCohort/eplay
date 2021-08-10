@@ -1,14 +1,11 @@
 <% if (allWorldCountries) { %>
-<h1>All Countries</h1>
-
-<ol>
-	<% allWorldCountries.forEach( (item) => { %>
-	<li>
-		<%= item.country.regionsData('europe') %> has <%=
-		item.country.regionsData('europe').length %> european countries
-	</li>
-	<% }) %>
-</ol>
-
-<!-- <img src="/img/birthday/balloon.jpg"  width="200px" height="200px"/> -->
+	<h1>All Countries</h1>
+	<ol>
+		<% allWorldCountries.forEach((region) => { %>
+			<li> <%= region.name %> 
+			
+			</li>
+		<%})%>
+	</ol>
 <% } %>
+

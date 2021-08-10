@@ -5,7 +5,7 @@ const http = require("http");
 
 const bankModel = require("./model/bank.model.js");
 const state = require("./model/region.model.js");
-const country = require("countryinfo");
+
 
 const app = express();
 const port = 3000;
@@ -105,6 +105,7 @@ app.get("/states", (req, res) => {
 	res.render("states", { playState: playState, allStates: allStates });
 });
 
+
 app.post("/states", (req, res) => {});
 
 app.get("/states/:id", (req, res) => {
@@ -112,23 +113,6 @@ app.get("/states/:id", (req, res) => {
 
 	// res.send(state.show(stateIndex))
 	res.render("states/show", { data: state.show(stateIndex) });
-});
-//all country app
-app.get("/countryInfo", (req, res) => {
-	// res.send(state.index())
-	const allWorldCountries = country.index();
-
-	// res.send(allStates)
-	res.render("countryInfo", { allWorldCountries: allWorldCountries });
-});
-
-app.post("/countryInfo", (req, res) => {});
-
-app.get("/countryInfo/:id", (req, res) => {
-	const countryIndex = parseInt(req.params.id);
-
-	// res.send(state.show(stateIndex))
-	res.render("countryInfo/show", { data: country.show(countryIndex) });
 });
 
 app.use(function (req, res) {

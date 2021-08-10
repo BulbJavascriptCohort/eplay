@@ -1,20 +1,46 @@
-const allcountries = require("../db/worldCountries.db.js");
+const allRegionsArray = require("../db/worldCountries.db.js");
 
+
+// console.log(allRegionsArray)
 /**
  * return all countries
  *
- * @return [all the countries]
+ *  [all the countries]
  */
 function index() {
-	// console.table(countries.module)
-	return allcountries.module;
+	return allRegionsArray;
 }
 
-function oneCountry(index) {
-	return allcountries.module[index];
+function getRegion(regionName) {
+	for(let i=0;i < allRegionsArray.length;i++){
+		if(allRegionsArray[i][regionName.toLowerCase()]){
+			return allRegionsArray[i][regionName]
+		}
+	}
+	return "resource does not exist"
+	
+}
+function countries(region) {
+	let regionData = getRegion(region)
+	
+	return regionData['countries']
+	
 }
 
-exports.module = {
+function getOneCountry(region, country){
+	let countryData=countries(region)
+	const filteredCountry = countryData.filter(function(nation){
+		return nation['names']['en']
+		.map(name => name.toLowerCase())
+		.includes(country.toLowerCase())
+	})
+	return filteredCountry[0];
+	
+}
+
+module.exports = {
 	index,
-	oneCountry,
+	getRegion,
+	countries,
+	getOneCountry,
 };
