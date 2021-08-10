@@ -1,0 +1,16 @@
+<% if (regionData) { %>
+    <h1>
+		 All Regions In The World 
+    </h1>
+
+    <ol>
+    	<% regionData.forEach( (region) => { %> 
+    		<li> <%= region.name %>
+    			<ol>
+    		<% region.countries.forEach( (country) => { %> 
+    			<li> <%= country.names.en[0] %> <%= country.emoji %>
+    		<% }) %> </ol> </li>	
+    	<% }) %>	
+    </ol>
+
+<% } %>

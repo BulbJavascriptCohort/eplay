@@ -1,0 +1,18 @@
+
+
+<% if (products) { %>
+    <h1>
+		 Show All Products 
+    </h1>
+
+    <ol>
+    	<% products.forEach( (product) => { %> 
+    		<li> 
+    			ID : <%= product.id %>
+    			Title  : <%= product.title %>
+    			<img src="<%= product.image %>" />
+    		</li>	
+    	<% }) %>	
+    </ol>
+
+<% } %>

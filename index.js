@@ -5,6 +5,8 @@ const http = require("http")
 
 const bankModel = require("./model/bank.model.js")
 const state = require("./model/region.model.js")
+const country = require("./model/country.model.js")
+const fakeStore = require("./model/fakestore.model.js")
 
 const app = express()
 const port = 3000
@@ -123,24 +125,36 @@ app.get('/states', (req, res) => { // res.send(state.index())
 app.post("/states", (req, res) => {})
 
 app.get('/states/:id', (req, res) => {
-
     const stateIndex = parseInt(req.params.id)
 
     // res.send(state.show(stateIndex))
     res.render("states/show", {data : state.show(stateIndex)})
 })
 
-app.use(function (req, res) {
-    res.writeHead(400, {'Content-Type': 'text/plain'})
-    res.end(`Error 404: Resource is missing. Go back home ${__dirname}`)
+app.get("/countries", (req, res) => {
+    const regionData = country.index()
+    res.render("country", { regionData  })
+    // res.send( regionData )
 })
 
+app.get("/products", (req, res) => {
+    
+    fakeStore.getAllProducts().then((products) => {
+        res.render("fakestore", { products  })    
+    })
+    
+    // res.send( regionData )
+})
 
 // app.get('/iyin', (req, res) => {
 // console.log( app )
 // res.send('Iyin World!')
 // })
 
+app.use(function (req, res) {
+    res.writeHead(400, {'Content-Type': 'text/plain'})
+    res.end(`Error 404: Resource is missing. Go back home ${__dirname}`)
+})
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)
